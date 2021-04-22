@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //User selects rock paper or scissors
+      let userPlay = prompt('Select Rock, Paper, or Scissors: ')
+      if(userPlay.toLowerCase('rock')=== 'rock'){
+        userSelection = 'rock'
+        console.log(userSelection)
+      } else if (userPlay.toLowerCase('paper')=== 'paper'){
+        userSelection = 'paper'
+        console.log(userSelection)
+      } else if (userPlay.toLowerCase('scissors')=== 'scissors'){
+        userSelection = 'scissors'
+        console.log(userSelection)
+      } else console.log('Invalid selection, please try again.');
+      //Computer randomly generates rock paper or scissors
+      let roshamboArray = ['rock','paper','scissors'];
+      let computerPlay = Math.floor(Math.random()*roshamboArray.length);
+      computerPlay = roshamboArray[computerPlay];
+      const computerSelection = computerPlay;
+      console.log(computerSelection);
+      //Compare results between user and Computer
+      function playRound(userSelection,computerSelection){
+        if (userSelection === computerSelection){
+          return 'It\'s a tie!'
+        } else if (userSelection ==='rock' && computerSelection ==='scissors') {
+          return 'You win!'
+        } else if (userSelection ==='paper' && computerSelection ==='rock'){
+          return 'You win!'
+        } else if (userSelection ==='scissors' && computerSelection ==='paper'){
+          return 'You win!'
+        } else return 'Computer wins!'
+      }
+      //Print out winner
+      console.log(playRound(userSelection,computerSelection));
+      //log score
+    </script>
+  </body>
+</html>
