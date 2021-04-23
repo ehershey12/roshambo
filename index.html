@@ -14,8 +14,8 @@
       //Computer randomly generates rock paper or scissors
       function computerPlay(){
         let random = Math.floor(Math.random()*roshamboArray.length);
-        computerPlay = roshamboArray[random];
-        return computerPlay;
+        random = roshamboArray[random];
+        return random;
       }
       //Compare results between user and Computer and determine winner
       function playRound(userSelection,computerSelection){
@@ -28,17 +28,17 @@
             userScore++;
             return 'You win!'
           } else if (userSelection.toLowerCase() ==='scissors' && computerSelection ==='paper'){
-            userScore++
+            userScore++;
             return 'You win!'
           } else {
-            computerScore++
+            computerScore++;
             return 'Computer wins!'
           }
         }
       //Play multiple rounds
-      function game(){
+      const game = () => {
         let userSelection = prompt("Make a selection: ");
-        let computerSelection = computerPlay;
+        let computerSelection = computerPlay()
         console.log(playRound(userSelection,computerSelection));
         console.log('Your score: '+userScore);
         console.log('Computer score: '+computerScore);
