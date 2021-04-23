@@ -7,38 +7,52 @@
   <body>
     <script>
       //User selects rock paper or scissors
-      let userPlay = prompt('Select Rock, Paper, or Scissors: ')
-      if(userPlay.toLowerCase('rock')=== 'rock'){
-        userSelection = 'rock'
-        console.log(userSelection)
-      } else if (userPlay.toLowerCase('paper')=== 'paper'){
-        userSelection = 'paper'
-        console.log(userSelection)
-      } else if (userPlay.toLowerCase('scissors')=== 'scissors'){
-        userSelection = 'scissors'
-        console.log(userSelection)
-      } else console.log('Invalid selection, please try again.');
+      //let userPlay = prompt('Select Rock, Paper, or Scissors: ')
+      //Rock Paper Scissors outer variables
+      const roshamboArray = ['rock','paper','scissors'];
+      let userScore = 0;
+      let computerScore = 0;
+      i = 1;
       //Computer randomly generates rock paper or scissors
-      let roshamboArray = ['rock','paper','scissors'];
-      let computerPlay = Math.floor(Math.random()*roshamboArray.length);
-      computerPlay = roshamboArray[computerPlay];
-      const computerSelection = computerPlay;
-      console.log(computerSelection);
-      //Compare results between user and Computer
-      function playRound(userSelection,computerSelection){
-        if (userSelection === computerSelection){
-          return 'It\'s a tie!'
-        } else if (userSelection ==='rock' && computerSelection ==='scissors') {
-          return 'You win!'
-        } else if (userSelection ==='paper' && computerSelection ==='rock'){
-          return 'You win!'
-        } else if (userSelection ==='scissors' && computerSelection ==='paper'){
-          return 'You win!'
-        } else return 'Computer wins!'
+      function computerPlay(){
+        let random = Math.floor(Math.random()*roshamboArray.length);
+        computerPlay = roshamboArray[random];
+        return computerPlay;
       }
-      //Print out winner
-      console.log(playRound(userSelection,computerSelection));
-      //log score
+      //Compare results between user and Computer and determine winner
+      function playRound(userSelection,computerSelection){
+          if (userSelection === computerSelection){
+            return 'It\'s a tie!'
+          } else if (userSelection.toLowerCase() === 'rock' && computerSelection ==='scissors') {
+            userScore++;
+            return 'You win!'
+          } else if (userSelection.toLowerCase() ==='paper' && computerSelection ==='rock'){
+            userScore++;
+            return 'You win!'
+          } else if (userSelection.toLowerCase() ==='scissors' && computerSelection ==='paper'){
+            userScore++
+            return 'You win!'
+          } else {
+            computerScore++
+            return 'Computer wins!'
+          }
+        }
+      //Play multiple rounds
+      function game(){
+        let userSelection = prompt("Make a selection: ");
+        let computerSelection = computerPlay;
+        console.log(playRound(userSelection,computerSelection));
+        console.log('Your score: '+userScore);
+        console.log('Computer score: '+computerScore);
+        i++;
+          if(i <= 5){
+            game()
+          } else {
+            console.log('Game over! Final score: User: '+userScore+', Computer: '+computerScore)
+          }
+      }
+      game();
+      //log score*/
     </script>
   </body>
 </html>
